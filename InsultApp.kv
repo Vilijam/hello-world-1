@@ -1,0 +1,90 @@
+<MenuLayout>:
+	name: 'menu'
+	#Laver menulayoutet og giver det navnet 'menu'
+	BoxLayout:
+		orientation: 'vertical'
+		#Giver det layoutet 'BoxLayout', og gør det vertikalt
+		Label:
+			text: root.insulttxt
+			size_hint: (1,.7)
+			#Opretter en label der har tekst efter variablen oprettet i pythonfilen
+			#size_hint beskriver hvor store widgetsne skal være i procent, på først horisontal derefter vertikal led.
+		Button:
+			text: 'Generate a personalized insult'
+			font_size: 40
+			#Opretter en button med en tekst på, som har en vis størrelse tekst
+			on_press:
+				root.manager.transition.direction = 'left'
+				root.manager.current = 'input'
+				#on_press beskriver hvad der sker når knappen bliver trykket
+				#Beskriver hvilken vej en transition mellem skærme vil gå, og derefter hvad der skal transitioneres til
+			size_hint: (1,.1)
+		Button:
+			text: 'Generate a random insult'
+			font_size: 40
+			on_press: app.toggle()
+			size_hint: (1,.1)
+			#Opretter en knap som bruger MakeInsult fra det originale program
+
+<PersonalizedLayout>:
+	name: 'input'
+	#Laver layoutet til input og giver det navnet 'input'
+	BoxLayout:
+		orientation: 'vertical'
+		#Giver det layoutet boxlayout, og gør det vertikalt
+		Label:
+			font_size: 18
+			text: "This is the structure of the insult: I don't want to talk to you no more you [adjective] [job]!... \nI [act] in your general direction! Your [family] was a [job] and your [family] smelt of [thing]!"
+			#Opretter et label med hvordan fornærmelsen bygges op
+		TextInput:
+			id: mitInput1
+			text: 'Write the adjective here'
+			size_hint: (1,.1)
+			#Laver et textinput, med et specifikt id som man kan calle, og giver det en starttext som beskriver hvad man skal skrive
+		TextInput:
+			id: mitInput2
+			text: 'Write the first job here'
+			size_hint: (1,.1)
+			#Laver et textinput, med et specifikt id som man kan calle, og giver det en starttext som beskriver hvad man skal skrive
+		TextInput:
+			id: mitInput3
+			text: 'Write the act here'
+			size_hint: (1,.1)
+			#Laver et textinput, med et specifikt id som man kan calle, og giver det en starttext som beskriver hvad man skal skrive
+		TextInput:
+			id: mitInput4
+			text: 'Write the first family member here'
+			size_hint: (1,.1)
+			#Laver et textinput, med et specifikt id som man kan calle, og giver det en starttext som beskriver hvad man skal skrive
+		TextInput:
+			id: mitInput5
+			text: 'Write the second job here'
+			size_hint: (1,.1)
+			#Laver et textinput, med et specifikt id som man kan calle, og giver det en starttext som beskriver hvad man skal skrive
+		TextInput:
+			id: mitInput6
+			text: 'Write the second family member here'
+			size_hint: (1,.1)
+			#Laver et textinput, med et specifikt id som man kan calle, og giver det en starttext som beskriver hvad man skal skrive
+		TextInput:
+			id: mitInput7
+			text: 'Write the thing here'
+			size_hint: (1,.1)
+			#Laver et textinput, med et specifikt id som man kan calle, og giver det en starttext som beskriver hvad man skal skrive
+		Button:
+			text: "Put the insult together"
+			font_size: 40
+			on_press:
+				root.togglenew()
+				root.manager.transition.direction = 'right'
+				root.manager.current = 'menu'
+			size_hint: (1,.2)
+			#Laver en knap som skifter tilbage til 'menu', og derudover caller den funktion som samler den personaliserede fornærmelse
+		Button:
+			text: "Back"
+			font_size: 40
+			on_press:
+				root.manager.transition.direction = 'right'
+				root.manager.current = 'menu'
+			size_hint: (1,.2)
+			#Laver en knap som skifter skærmen tilbage til 'menu'
